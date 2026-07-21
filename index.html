@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>4 meses · Kamila</title>
+<meta name="description" content="Cuatro meses contigo.">
+<meta name="theme-color" content="#fff8f3">
+
+<!--
+  ============================================================
+  4 MESES · una carta web
+  ------------------------------------------------------------
+  Archivo único y autocontenido. Solo depende de Google Fonts.
+  Las fotos van en la carpeta ./fotos/ junto a este archivo.
+
+  Busca los comentarios "EDITA AQUI" para personalizar todo.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   1. TOKENS
+   ============================================================ */
+:root{
+  --rosa:      #f3cdd9;
+  --rosa-hondo:#e5a8bd;
+  --durazno:   #fbd9c2;
+  --lavanda:   #ded6f0;
+  --crema:     #fff8f3;
+  --crema-2:   #fdf1ea;
+  --tinta:     #6b4a52;
+  --tinta-suave:#8d6c74;
+  --oro:       #c9a227;
+
+  --script: 'Great Vibes', cursive;
+  --serif:  'Cormorant Garamond', Georgia, serif;
+  --sans:   'Quicksand', system-ui, -apple-system, sans-serif;
+
+  --radio: 18px;
+  --sombra: 0 10px 30px -12px rgba(107,74,82,.22);
+  --sombra-suave: 0 4px 18px -8px rgba(107,74,82,.18);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:var(--sans);
+  color:var(--tinta);
+  line-height:1.75;
+  font-size:17px;
+  overflow-x:hidden;
+  background:var(--crema);
+}
+
+/* ------ fondo: degradado cálido + textura de papel ------ */
+.telon{
+  position:fixed; inset:0; z-index:-2; pointer-events:none;
+  background:
+    radial-gradient(900px 620px at 12% -6%,  rgba(243,205,217,.55), transparent 62%),
+    radial-gradient(760px 540px at 92% 14%,  rgba(222,214,240,.48), transparent 60%),
+    radial-gradient(820px 600px at 6% 58%,   rgba(251,217,194,.42), transparent 60%),
+    radial-gradient(900px 700px at 98% 88%,  rgba(243,205,217,.40), transparent 62%),
+    linear-gradient(175deg, var(--crema) 0%, var(--crema-2) 45%, var(--crema) 100%);
+}
+/* grano de papel, generado con SVG en línea (sin archivos externos) */
+.telon::after{
+  content:""; position:absolute; inset:0; opacity:.5; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='220' height='220' filter='url(%23g)' opacity='0.13'/></svg>");
+}
+
+/* ============================================================
+   2. LAYOUT
+   ============================================================ */
+.envoltura{width:min(680px,100% - 2.4rem); margin-inline:auto}
+section{position:relative; padding:5.5rem 0; z-index:1}
+@media (max-width:520px){ section{padding:4.25rem 0} }
+
+h1,h2,h3{margin:0; font-weight:400; line-height:1.15}
+.titulo{
+  font-family:var(--script);
+  color:var(--tinta);
+  text-align:center;
+  font-size:clamp(2.5rem,10vw,3.6rem);
+  letter-spacing:.5px;
+}
+.antetitulo{
+  text-align:center; font-family:var(--sans); font-size:.72rem;
+  letter-spacing:.34em; text-transform:uppercase; color:var(--rosa-hondo);
+  margin:0 0 .55rem; font-weight:600;
+}
+p{margin:0 0 1.1rem}
+
+/* ============================================================
+   3. MARIPOSAS QUE VUELAN
+   ============================================================ */
+.cielo{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden}
+.mariposa{
+  position:absolute; width:46px; will-change:transform;
+  animation:vuelo linear infinite;
+}
+.mariposa svg{width:100%; height:auto; display:block; overflow:visible}
+/* el aleteo: cada ala rota sobre el eje del cuerpo */
+.ala{transform-box:fill-box; animation:aletear .34s ease-in-out infinite alternate}
+.ala-izq{transform-origin:100% 50%}
+.ala-der{transform-origin:0% 50%}
+@keyframes aletear{
+  from{transform:rotateY(-6deg)}
+  to  {transform:rotateY(58deg)}
+}
+/* la trayectoria: sube en diagonal, con vaivén y giros */
+@keyframes vuelo{
+  0%   {transform:translate3d(-14vw,102vh,0) rotate(-8deg)  scale(.85)}
+  18%  {transform:translate3d(16vw, 78vh,0)  rotate(14deg)  scale(1)}
+  36%  {transform:translate3d(4vw,  58vh,0)  rotate(-16deg) scale(.92)}
+  54%  {transform:translate3d(38vw, 42vh,0)  rotate(10deg)  scale(1.05)}
+  72%  {transform:translate3d(22vw, 24vh,0)  rotate(-12deg) scale(.95)}
+  88%  {transform:translate3d(62vw, 10vh,0)  rotate(16deg)  scale(1)}
+  100% {transform:translate3d(48vw,-16vh,0)  rotate(-6deg)  scale(.88)}
+}
+@keyframes vuelo-espejo{
+  0%   {transform:translate3d(108vw, 96vh,0) rotate(8deg)   scale(.8)}
+  20%  {transform:translate3d(74vw,  72vh,0) rotate(-14deg) scale(1)}
+  42%  {transform:translate3d(88vw,  52vh,0) rotate(12deg)  scale(.9)}
+  64%  {transform:translate3d(52vw,  34vh,0) rotate(-10deg) scale(1.06)}
+  84%  {transform:translate3d(70vw,  14vh,0) rotate(14deg)  scale(.95)}
+  100% {transform:translate3d(40vw, -14vh,0) rotate(-8deg)  scale(.85)}
+}
+.m1{animation-duration:26s; animation-delay:-2s}
+.m2{animation-name:vuelo-espejo; animation-duration:34s; animation-delay:-11s; width:34px; opacity:.85}
+.m3{animation-duration:41s; animation-delay:-24s; width:28px; opacity:.7}
+.m4{animation-name:vuelo-espejo; animation-duration:30s; animation-delay:-18s; width:40px; opacity:.78}
+.m2 .ala{animation-duration:.28s}
+.m3 .ala{animation-duration:.42s}
+.m4 .ala{animation-duration:.31s}
+
+/* ============================================================
+   4. REVELADO AL HACER SCROLL
+   ============================================================ */
+.revela{opacity:0; transform:translateY(26px); transition:opacity .85s ease, transform .85s cubic-bezier(.2,.7,.3,1)}
+.revela.visible{opacity:1; transform:none}
+.revela[data-d="1"]{transition-delay:.1s}
+.revela[data-d="2"]{transition-delay:.2s}
+.revela[data-d="3"]{transition-delay:.3s}
+.revela[data-d="4"]{transition-delay:.4s}
+
+@media (prefers-reduced-motion:reduce){
+  .revela{opacity:1; transform:none; transition:none}
+  .mariposa,.ala{animation:none}
+  .mariposa{opacity:.5}
+  .m1{transform:translate(6vw,72vh)} .m2{transform:translate(76vw,30vh)}
+  .m3{transform:translate(30vw,12vh)} .m4{transform:translate(84vw,64vh)}
+  html{scroll-behavior:auto}
+}
+
+/* ============================================================
+   5. PORTADA
+   ============================================================ */
+.portada{
+  min-height:100svh; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; text-align:center;
+  padding:6rem 0 4rem; position:relative;
+}
+.portada .adorno-sup{width:min(300px,64vw); margin:0 auto 1.2rem; opacity:.9}
+.portada .adorno-inf{width:min(240px,52vw); margin:1.6rem auto 0; opacity:.85}
+.cuatro{
+  font-family:var(--script);
+  font-size:clamp(4.4rem,25vw,8rem);
+  line-height:.9; color:var(--tinta);
+  text-shadow:0 6px 26px rgba(229,168,189,.45);
+}
+.meses{
+  font-family:var(--sans); font-weight:600;
+  letter-spacing:.42em; text-transform:uppercase;
+  font-size:.78rem; color:var(--rosa-hondo);
+  margin:.5rem 0 1.4rem; padding-left:.42em;
+}
+.dedicatoria{
+  font-family:var(--serif); font-size:clamp(1.12rem,4.6vw,1.35rem);
+  font-style:italic; color:var(--tinta-suave);
+  max-width:24ch; margin:0 auto; line-height:1.55;
+}
+.nombre-ella{
+  font-family:var(--script); font-size:clamp(3.4rem,17vw,5rem);
+  color:var(--rosa-hondo); margin:.5rem 0 .2rem; line-height:1;
+}
+.te-amo{
+  font-family:var(--serif); font-style:italic;
+  font-size:clamp(1.05rem,4.4vw,1.28rem); color:var(--tinta-suave);
+}
+.fecha-portada{
+  margin-top:1.9rem; font-size:.74rem; letter-spacing:.28em;
+  text-transform:uppercase; color:var(--tinta-suave); opacity:.8;
+}
+.flecha{
+  margin-top:2.6rem; font-size:1.5rem; color:var(--rosa-hondo);
+  animation:respira 2.6s ease-in-out infinite; line-height:1;
+}
+@keyframes respira{0%,100%{transform:translateY(0);opacity:.55} 50%{transform:translateY(9px);opacity:1}}
+@media (prefers-reduced-motion:reduce){.flecha{animation:none}}
+
+/* ============================================================
+   6. SEPARADORES
+   ============================================================ */
+.separador{display:block; width:min(260px,60vw); margin:0 auto; opacity:.75}
+
+/* ============================================================
+   7. TARJETAS DE FRASES
+   ============================================================ */
+.frase-principal{
+  font-family:var(--serif); font-style:italic;
+  font-size:clamp(1.35rem,5.6vw,1.75rem); line-height:1.55;
+  text-align:center; color:var(--tinta); max-width:22ch; margin:0 auto 2.6rem;
+}
+.frase-principal::before,.frase-principal::after{
+  content:""; display:block; width:38px; height:1px; margin:1.1rem auto;
+  background:linear-gradient(90deg,transparent,var(--rosa-hondo),transparent);
+}
+.frases{display:grid; gap:1rem}
+.frase{
+  background:rgba(255,255,255,.62);
+  border:1px solid rgba(229,168,189,.32);
+  border-radius:var(--radio);
+  padding:1.35rem 1.4rem;
+  font-family:var(--serif); font-style:italic; font-size:1.08rem;
+  line-height:1.6; box-shadow:var(--sombra-suave);
+  backdrop-filter:blur(2px);
+}
+.frase{text-align:center}
+
+/* ============================================================
+   8. LINEA DE TIEMPO
+   ============================================================ */
+.timeline{position:relative; margin-top:3rem; padding-left:2.6rem}
+.timeline::before{
+  content:""; position:absolute; left:9px; top:6px; bottom:6px; width:2px;
+  background:linear-gradient(180deg,transparent,var(--rosa) 8%,var(--lavanda) 50%,var(--durazno) 92%,transparent);
+  border-radius:2px;
+}
+.hito{position:relative; padding-bottom:2.8rem}
+.hito:last-of-type{padding-bottom:1rem}
+.hito .flor-nodo{
+  position:absolute; left:-2.6rem; top:0; width:22px; height:22px;
+  transform:translateX(-1px);
+}
+.hito .fecha{
+  font-family:var(--sans); font-weight:600; font-size:.7rem;
+  letter-spacing:.2em; text-transform:uppercase; color:var(--rosa-hondo);
+  margin-bottom:.3rem;
+}
+.hito h3{
+  font-family:var(--script); font-size:1.95rem; color:var(--tinta);
+  margin-bottom:.45rem; line-height:1.1;
+}
+.hito p{font-size:.98rem; color:var(--tinta-suave)}
+.hito em{color:var(--tinta); font-style:italic}
+
+.rima{
+  margin:1.4rem 0 0; padding:1.4rem 1.2rem;
+  background:rgba(255,255,255,.62);
+  border:1px solid rgba(229,168,189,.32);
+  border-radius:var(--radio);
+  box-shadow:var(--sombra-suave);
+  font-family:var(--serif); font-style:italic; font-size:1.08rem;
+  line-height:1.7; color:var(--tinta); text-align:center;
+}
+.rima::before,.rima::after{
+  content:""; display:block; width:30px; height:1px; margin:0 auto .85rem;
+  background:linear-gradient(90deg,transparent,var(--rosa-hondo),transparent);
+}
+.rima::after{margin:.85rem auto 0}
+/* los versos van cortados a mano con <br>, así que solo se ajusta el aire */
+@media (max-width:540px){
+  .rima{padding:1.4rem .9rem; font-size:1.02rem; line-height:1.8}
+}
+.cierre-historia{
+  margin-top:2.2rem; padding:1.8rem 1.5rem;
+  background:rgba(255,255,255,.6);
+  border:1px solid rgba(229,168,189,.3);
+  border-radius:var(--radio); box-shadow:var(--sombra-suave);
+  font-family:var(--serif); font-size:1.1rem; line-height:1.8; text-align:center;
+}
+.cierre-historia p:last-child{margin-bottom:0}
+.cierre-historia strong{font-weight:600; color:var(--rosa-hondo)}
+
+/* ============================================================
+   9. RAZONES
+   ============================================================ */
+.razones{list-style:none; padding:0; margin:2.6rem 0 0; display:grid; gap:.85rem}
+@media(min-width:620px){.razones{grid-template-columns:1fr 1fr}}
+.razon{
+  display:flex; gap:.85rem; align-items:flex-start;
+  background:rgba(255,255,255,.6);
+  border:1px solid rgba(229,168,189,.28);
+  border-radius:14px; padding:1rem 1.05rem;
+  box-shadow:var(--sombra-suave);
+  font-size:.96rem; line-height:1.6;
+}
+.razon svg{flex:0 0 22px; width:22px; margin-top:.28rem}
+.razon b{
+  display:block; font-family:var(--script); font-size:1.35rem;
+  color:var(--rosa-hondo); font-weight:400; line-height:1; margin-bottom:.2rem;
+}
+
+/* ============================================================
+   10. POEMAS
+   ============================================================ */
+.poemas{display:grid; gap:1.5rem; margin-top:2.8rem}
+.poema{
+  position:relative;
+  background:linear-gradient(160deg,#fffdf8,#fbf1e6 70%,#f7e8dc);
+  border:1px solid rgba(201,162,39,.24);
+  border-radius:6px;
+  padding:2rem 1.5rem 1.6rem;
+  box-shadow:0 12px 28px -16px rgba(107,74,82,.35), inset 0 0 60px rgba(201,162,39,.06);
+}
+.poema::before{
+  content:""; position:absolute; inset:7px; border:1px solid rgba(201,162,39,.18);
+  border-radius:3px; pointer-events:none;
+}
+.poema .verso{
+  font-family:var(--serif); font-size:1.12rem; line-height:1.85;
+  white-space:pre-line; margin:0 0 1.1rem; color:#5d4046; text-align:center;
+}
+/* en pantallas angostas el verso centrado se parte y pierde la métrica:
+   se alinea a la izquierda y se achica para que casi ningún verso corte */
+@media (max-width:540px){
+  .poema{padding:1.7rem 1.1rem 1.4rem}
+  .poema .verso{font-size:.96rem; line-height:1.72; text-align:left; padding-left:.2em}
+}
+.poema .autor{
+  font-family:var(--script); font-size:1.7rem; text-align:right;
+  color:var(--rosa-hondo); line-height:1; margin:0;
+}
+.poema .obra{
+  display:block; text-align:right; font-family:var(--sans);
+  font-size:.66rem; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--tinta-suave); opacity:.75; margin-top:.4rem;
+}
+
+/* ============================================================
+   11. POLAROIDS
+   ============================================================ */
+.galeria{display:grid; gap:2.2rem; margin-top:3rem; justify-items:center}
+@media(min-width:620px){.galeria{grid-template-columns:1fr 1fr; gap:2.6rem 1.6rem}}
+.polaroid{
+  background:#fff; padding:13px 13px 0; width:min(280px,80vw);
+  box-shadow:0 14px 30px -14px rgba(107,74,82,.45);
+  border-radius:3px; transition:transform .5s cubic-bezier(.2,.7,.3,1);
+}
+.polaroid:nth-child(1){transform:rotate(-2.5deg)}
+.polaroid:nth-child(2){transform:rotate(2deg)}
+.polaroid:nth-child(3){transform:rotate(1.6deg)}
+.polaroid:nth-child(4){transform:rotate(-1.8deg)}
+.polaroid:hover,.polaroid:active{transform:rotate(0deg) scale(1.03)}
+.polaroid img{
+  display:block; width:100%; aspect-ratio:3/4; object-fit:cover;
+  background:linear-gradient(135deg,var(--rosa),var(--lavanda));
+  border-radius:1px;
+}
+.polaroid figcaption{
+  font-family:var(--script); font-size:1.3rem; line-height:1.35;
+  text-align:center; color:var(--tinta); padding:.85rem .4rem 1.05rem;
+}
+
+/* ============================================================
+   12. CARTA FINAL
+   ============================================================ */
+.carta{
+  background:rgba(255,255,255,.68);
+  border:1px solid rgba(229,168,189,.34);
+  border-radius:var(--radio);
+  padding:2.4rem 1.6rem 2rem;
+  box-shadow:var(--sombra);
+  margin-top:2.6rem;
+  font-family:var(--serif); font-size:1.1rem; line-height:1.85;
+}
+.carta .saludo{font-family:var(--script); font-size:2.1rem; color:var(--rosa-hondo); margin-bottom:.9rem; line-height:1}
+.firma{margin-top:1.8rem; text-align:right}
+.firma .nombre{font-family:var(--script); font-size:2.3rem; color:var(--tinta); line-height:1}
+.firma .fecha{
+  font-family:var(--sans); font-size:.68rem; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--tinta-suave); opacity:.8; margin-top:.35rem;
+}
+.frase-final{
+  margin-top:3rem; text-align:center;
+  font-family:var(--serif); font-style:italic;
+  font-size:clamp(1.18rem,5vw,1.5rem); line-height:1.6; color:var(--tinta);
+}
+
+footer{
+  padding:3rem 0 4.5rem; text-align:center;
+  font-size:.72rem; letter-spacing:.24em; text-transform:uppercase;
+  color:var(--tinta-suave); opacity:.6;
+}
+footer .corazon{display:block; font-size:1.1rem; margin-bottom:.6rem; letter-spacing:0; opacity:.8}
+</style>
+</head>
+<body>
+
+<div class="telon" aria-hidden="true"></div>
+
+<!-- ============================================================
+     MARIPOSAS VOLANDO (capa fija de fondo)
+     ============================================================ -->
+<div class="cielo" aria-hidden="true">
+  <!-- plantilla reutilizable de mariposa acuarela -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <linearGradient id="alaA" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%"  stop-color="#f6d3de"/>
+        <stop offset="55%" stop-color="#e9b6c9"/>
+        <stop offset="100%" stop-color="#d9c2ea"/>
+      </linearGradient>
+      <linearGradient id="alaB" x1="1" y1="0" x2="0" y2="1">
+        <stop offset="0%"  stop-color="#fbdcc6"/>
+        <stop offset="55%" stop-color="#f3c6d4"/>
+        <stop offset="100%" stop-color="#ddd2f0"/>
+      </linearGradient>
+      <symbol id="mariposa" viewBox="0 0 100 84">
+        <!-- ala izquierda: trazo orgánico, sin simetría perfecta -->
+        <g class="ala ala-izq">
+          <path d="M49 44 C40 20 28 6 16 9 C3 12 1 30 8 40 C14 49 30 50 40 47 C44 46 47 45 49 44 Z"
+                fill="url(#alaA)" opacity=".9"/>
+          <path d="M49 46 C41 54 30 62 20 74 C12 83 22 84 30 79 C39 73 46 62 49 52 Z"
+                fill="url(#alaA)" opacity=".72"/>
+          <path d="M20 18 C25 22 31 29 35 36" stroke="#d69bb2" stroke-width="1" fill="none" opacity=".35" stroke-linecap="round"/>
+        </g>
+        <!-- ala derecha -->
+        <g class="ala ala-der">
+          <path d="M51 44 C60 19 73 5 85 9 C98 13 99 31 92 41 C86 50 70 50 60 47 C56 46 53 45 51 44 Z"
+                fill="url(#alaB)" opacity=".9"/>
+          <path d="M51 46 C59 55 71 63 80 75 C88 84 78 84 70 79 C61 73 54 62 51 52 Z"
+                fill="url(#alaB)" opacity=".72"/>
+          <path d="M80 18 C75 22 69 29 65 36" stroke="#d69bb2" stroke-width="1" fill="none" opacity=".35" stroke-linecap="round"/>
+        </g>
+        <!-- cuerpo y antenas -->
+        <path d="M50 36 C52.6 40 52.6 56 50 62 C47.4 56 47.4 40 50 36 Z" fill="#a97f8c" opacity=".85"/>
+        <path d="M49 36 C46 29 42 25 38 23" stroke="#a97f8c" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".8"/>
+        <path d="M51 36 C54 29 58 25 62 23" stroke="#a97f8c" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".8"/>
+        <circle cx="37.4" cy="22.4" r="1.5" fill="#a97f8c" opacity=".8"/>
+        <circle cx="62.6" cy="22.4" r="1.5" fill="#a97f8c" opacity=".8"/>
+      </symbol>
+    </defs>
+  </svg>
+  <div class="mariposa m1"><svg viewBox="0 0 100 84"><use href="#mariposa"/></svg></div>
+  <div class="mariposa m2"><svg viewBox="0 0 100 84"><use href="#mariposa"/></svg></div>
+  <div class="mariposa m3"><svg viewBox="0 0 100 84"><use href="#mariposa"/></svg></div>
+  <div class="mariposa m4"><svg viewBox="0 0 100 84"><use href="#mariposa"/></svg></div>
+</div>
+
+
+<!-- ============================================================
+     1 · PORTADA
+     ============================================================ -->
+<header class="portada">
+  <div class="envoltura">
+
+    <!-- ramo de acuarela superior -->
+    <svg class="adorno-sup revela" viewBox="0 0 300 90" aria-hidden="true">
+      <path d="M20 72 C60 66 92 52 122 44" stroke="#c3ccae" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".8"/>
+      <path d="M280 74 C240 68 208 54 178 46" stroke="#c3ccae" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".8"/>
+      <path d="M55 68 C48 60 50 52 60 54 C66 55 66 64 55 68 Z" fill="#cdd8b6" opacity=".75"/>
+      <path d="M96 58 C90 50 93 42 102 45 C108 47 106 55 96 58 Z" fill="#cdd8b6" opacity=".7"/>
+      <path d="M245 70 C252 62 250 54 240 56 C234 57 234 66 245 70 Z" fill="#cdd8b6" opacity=".75"/>
+      <path d="M204 60 C210 52 207 44 198 47 C192 49 194 57 204 60 Z" fill="#cdd8b6" opacity=".7"/>
+      <!-- peonía central -->
+      <g transform="translate(150,40)">
+        <path d="M0 -22 C13 -22 24 -12 22 2 C20 16 9 24 -2 23 C-15 22 -24 12 -22 -2 C-20 -14 -11 -22 0 -22 Z" fill="#f2c9d7" opacity=".85"/>
+        <path d="M-2 -14 C8 -15 16 -7 15 2 C14 11 6 17 -2 16 C-11 15 -16 8 -15 0 C-14 -8 -9 -13 -2 -14 Z" fill="#e9b0c6" opacity=".8"/>
+        <path d="M-1 -7 C5 -8 10 -3 9 3 C8 8 3 11 -2 10 C-7 9 -9 5 -8 0 C-7 -4 -4 -7 -1 -7 Z" fill="#dd93b1" opacity=".75"/>
+        <path d="M-9 -9 C-4 -13 3 -13 8 -9" stroke="#c97b9d" stroke-width=".9" fill="none" opacity=".5" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(112,54) scale(.62)">
+        <path d="M0 -20 C11 -20 20 -11 19 2 C18 14 8 21 -2 20 C-13 19 -21 10 -20 -2 C-19 -13 -10 -20 0 -20 Z" fill="#fbd9c2" opacity=".85"/>
+        <path d="M-1 -10 C6 -11 12 -5 11 2 C10 9 4 13 -2 12 C-9 11 -12 6 -11 0 C-10 -6 -6 -10 -1 -10 Z" fill="#f5c3a6" opacity=".8"/>
+      </g>
+      <g transform="translate(190,56) scale(.55)">
+        <path d="M0 -20 C11 -20 20 -11 19 2 C18 14 8 21 -2 20 C-13 19 -21 10 -20 -2 C-19 -13 -10 -20 0 -20 Z" fill="#ded6f0" opacity=".9"/>
+        <path d="M-1 -10 C6 -11 12 -5 11 2 C10 9 4 13 -2 12 C-9 11 -12 6 -11 0 C-10 -6 -6 -10 -1 -10 Z" fill="#c9bde8" opacity=".8"/>
+      </g>
+    </svg>
+
+    <!-- EDITA AQUI: el número grande de la portada -->
+    <h1 class="cuatro revela" data-d="1">Cuatro</h1>
+    <div class="meses revela" data-d="1">meses</div>
+
+    <!-- EDITA AQUI: la dedicatoria de portada y el nombre -->
+    <p class="dedicatoria revela" data-d="2">con la mujer que amo con todo mi corazón,</p>
+    <div class="nombre-ella revela" data-d="2">Kamila</div>
+    <p class="te-amo revela" data-d="3">Te amo, mi vida.</p>
+
+    <!-- EDITA AQUI: la fecha (año incluido) -->
+    <p class="fecha-portada revela" data-d="3">21 de julio &nbsp;·&nbsp; nuestro día</p>
+
+    <svg class="adorno-inf revela" data-d="4" viewBox="0 0 240 44" aria-hidden="true">
+      <path d="M10 30 C60 12 180 12 230 30" stroke="#e5a8bd" stroke-width="1.3" fill="none" stroke-linecap="round" opacity=".65"/>
+      <path d="M70 26 C64 18 67 10 76 13 C82 15 80 23 70 26 Z" fill="#cdd8b6" opacity=".7"/>
+      <path d="M170 26 C176 18 173 10 164 13 C158 15 160 23 170 26 Z" fill="#cdd8b6" opacity=".7"/>
+      <g transform="translate(120,24) scale(.5)">
+        <path d="M0 -22 C13 -22 24 -12 22 2 C20 16 9 24 -2 23 C-15 22 -24 12 -22 -2 C-20 -14 -11 -22 0 -22 Z" fill="#f2c9d7" opacity=".9"/>
+        <path d="M-1 -9 C6 -10 12 -4 11 3 C10 10 4 14 -2 13 C-9 12 -12 7 -11 1 C-10 -5 -6 -9 -1 -9 Z" fill="#dd93b1" opacity=".8"/>
+      </g>
+    </svg>
+
+    <div class="flecha" aria-hidden="true">↓</div>
+  </div>
+</header>
+
+
+<!-- ============================================================
+     2 · FRASE DE APERTURA
+     ============================================================ -->
+<section>
+  <div class="envoltura">
+    <p class="antetitulo revela">para empezar</p>
+
+    <!-- EDITA AQUI: tu frase principal -->
+    <p class="frase-principal revela" data-d="1">
+      Desde que te conozco, me siento el hombre más afortunado de este planeta.
+    </p>
+
+    <!-- EDITA AQUI: las tres frases que acompañan a la de arriba -->
+    <div class="frases">
+      <div class="frase revela" data-d="1">
+        No sé qué hice bien en esta vida, pero algo hice, porque me tocaste tú.
+      </div>
+      <div class="frase revela" data-d="2">
+        Hay gente que llega a tu vida y la ordena sin pedir permiso. Tú llegaste y todo empezó a tener sentido.
+      </div>
+      <div class="frase revela" data-d="3">
+        Si tuviera que explicar la suerte, contaría el día que te conocí y no haría falta decir nada más.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- separador floral -->
+<svg class="separador revela" viewBox="0 0 260 30" aria-hidden="true">
+  <path d="M8 18 C70 6 190 6 252 18" stroke="#e5a8bd" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".6"/>
+  <path d="M92 16 C86 9 89 3 97 6 C102 8 100 14 92 16 Z" fill="#cdd8b6" opacity=".7"/>
+  <path d="M168 16 C174 9 171 3 163 6 C158 8 160 14 168 16 Z" fill="#cdd8b6" opacity=".7"/>
+  <g transform="translate(130,15) scale(.42)">
+    <path d="M0 -22 C13 -22 24 -12 22 2 C20 16 9 24 -2 23 C-15 22 -24 12 -22 -2 C-20 -14 -11 -22 0 -22 Z" fill="#f2c9d7" opacity=".9"/>
+    <path d="M-1 -9 C6 -10 12 -4 11 3 C10 10 4 14 -2 13 C-9 12 -12 7 -11 1 C-10 -5 -6 -9 -1 -9 Z" fill="#dd93b1" opacity=".8"/>
+  </g>
+</svg>
+
+
+<!-- ============================================================
+     3 · LINEA DE TIEMPO
+     ============================================================ -->
+<section>
+  <div class="envoltura">
+    <p class="antetitulo revela">lo que hemos vivido</p>
+    <h2 class="titulo revela">Nuestra historia</h2>
+
+    <div class="timeline">
+
+      <!-- ---------- HITO 1 ---------- -->
+      <article class="hito revela">
+        <svg class="flor-nodo" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="11" fill="#fff8f3"/>
+          <path d="M12 3 C17 3 21 7 20 12 C19 17 15 20 11 19 C6 18 3 14 4 9 C5 5 8 3 12 3 Z" fill="#f2c9d7" opacity=".95"/>
+          <path d="M11.5 8 C14 7.6 16 9.6 15.6 12 C15.2 14.2 13 15.4 11 14.8 C9 14.2 8.2 12 9 10 C9.5 8.8 10.4 8.2 11.5 8 Z" fill="#dd93b1"/>
+        </svg>
+        <p class="fecha">24 de octubre de 2021</p>
+        <h3>El primer beso</h3>
+        <!-- EDITA AQUI -->
+        <p>
+          Un cumpleaños de diecisiete, la casa llena de gente y de ruido, y sonando
+          <em>La Gozadera</em> de Gente de Zona 🎵. Todos bailaban, pero yo solo te veía a ti.
+          En algún punto de esa canción el mundo bajó el volumen, se me olvidó el paso,
+          me acerqué y te besé. Nunca voy a poder escuchar esa canción sin volver ahí.
+        </p>
+      </article>
+
+      <!-- ---------- HITO 2 ---------- -->
+      <article class="hito revela">
+        <svg class="flor-nodo" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="11" fill="#fff8f3"/>
+          <path d="M12 3 C17 3 21 7 20 12 C19 17 15 20 11 19 C6 18 3 14 4 9 C5 5 8 3 12 3 Z" fill="#fbd9c2" opacity=".95"/>
+          <path d="M11.5 8 C14 7.6 16 9.6 15.6 12 C15.2 14.2 13 15.4 11 14.8 C9 14.2 8.2 12 9 10 C9.5 8.8 10.4 8.2 11.5 8 Z" fill="#f0b48a"/>
+        </svg>
+        <p class="fecha">3 de julio de 2022</p>
+        <h3>Nuestra primera cita</h3>
+        <!-- EDITA AQUI -->
+        <p>
+          Nos encontramos en <em>El Condado</em> para ver <em>Minions 2</em>. Llegaste
+          con tu mamá y yo casi me muero ahí mismo: los nervios que traía se me
+          multiplicaron por diez en dos segundos. Después nos sentamos en la sala y
+          se me pasó todo, porque me reí más viéndote reír a ti que con la película.
+          Ese día entendí que contigo hasta lo más simple se vuelve un buen recuerdo.
+        </p>
+      </article>
+
+      <!-- ---------- HITO 3 ---------- -->
+      <article class="hito revela">
+        <svg class="flor-nodo" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="11" fill="#fff8f3"/>
+          <path d="M12 3 C17 3 21 7 20 12 C19 17 15 20 11 19 C6 18 3 14 4 9 C5 5 8 3 12 3 Z" fill="#ded6f0" opacity=".95"/>
+          <path d="M11.5 8 C14 7.6 16 9.6 15.6 12 C15.2 14.2 13 15.4 11 14.8 C9 14.2 8.2 12 9 10 C9.5 8.8 10.4 8.2 11.5 8 Z" fill="#b7a6e0"/>
+        </svg>
+        <p class="fecha">22 de julio de 2022</p>
+        <h3>El día que te pedí ser mía</h3>
+        <!-- EDITA AQUI -->
+        <p>
+          Le pusimos nombre a lo que ya sentíamos. Dejamos de ser dos personas
+          que se gustaban para ser nosotros. Fue el día en que dejé de imaginarte
+          en mi futuro y empecé a construirlo contigo.
+        </p>
+      </article>
+
+      <!-- ---------- HITO 4 ---------- -->
+      <article class="hito revela">
+        <svg class="flor-nodo" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="11" fill="#fff8f3"/>
+          <path d="M12 3 C17 3 21 7 20 12 C19 17 15 20 11 19 C6 18 3 14 4 9 C5 5 8 3 12 3 Z" fill="#e5a8bd" opacity=".95"/>
+          <path d="M11.5 8 C14 7.6 16 9.6 15.6 12 C15.2 14.2 13 15.4 11 14.8 C9 14.2 8.2 12 9 10 C9.5 8.8 10.4 8.2 11.5 8 Z" fill="#c97b9d"/>
+        </svg>
+        <!-- EDITA AQUI: el año, si hace falta -->
+        <p class="fecha">21 de marzo · nuestra fecha</p>
+        <h3>El día que volvimos</h3>
+        <!-- EDITA AQUI -->
+        <p>
+          Después del tiempo lejos, de las cosas que dolieron y de todo lo que
+          tuvimos que aprender por separado, volviste. Y no volvimos a lo mismo:
+          volvimos mejor, más seguros, sabiendo por fin lo que teníamos.
+          Por eso el 21 es nuestro número y cada mes lo celebro como si fuera el primero.
+        </p>
+        <p class="rima">
+          Veintiuno de marzo,<br>
+          para siempre mi calendario;<br>
+          porque volviste, y contigo<br>
+          volvió lo necesario.
+        </p>
+      </article>
+
+      <!-- ---------- CIERRE ---------- -->
+      <!-- EDITA AQUI: el párrafo de cierre de la historia -->
+      <div class="cierre-historia revela">
+        <p>
+          Fuiste mi primer amor, y resulta que también vas a ser el único que me importe de verdad.
+          Entre esa fiesta de 2021 y este día se metieron kilómetros, silencios y meses enteros
+          en los que no supe nada de ti; y ninguno de ellos alcanzó.
+        </p>
+        <p>
+          Ni la distancia ni el tiempo pudieron con esto. Lo intentaron los dos y perdieron los dos.
+        </p>
+        <p>
+          Porque yo <strong>siempre te amé</strong>, incluso cuando no podía decírtelo;
+          <strong>te amo</strong> hoy, con todo lo que sé de ti y lo que me falta por descubrir;
+          y <strong>te voy a amar siempre</strong>.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<svg class="separador revela" viewBox="0 0 260 30" aria-hidden="true">
+  <path d="M8 15 C70 26 190 26 252 15" stroke="#e5a8bd" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".6"/>
+  <path d="M96 20 C90 13 93 7 101 10 C106 12 104 18 96 20 Z" fill="#cdd8b6" opacity=".7"/>
+  <path d="M164 20 C170 13 167 7 159 10 C154 12 156 18 164 20 Z" fill="#cdd8b6" opacity=".7"/>
+  <g transform="translate(130,17) scale(.42)">
+    <path d="M0 -22 C13 -22 24 -12 22 2 C20 16 9 24 -2 23 C-15 22 -24 12 -22 -2 C-20 -14 -11 -22 0 -22 Z" fill="#ded6f0" opacity=".9"/>
+    <path d="M-1 -9 C6 -10 12 -4 11 3 C10 10 4 14 -2 13 C-9 12 -12 7 -11 1 C-10 -5 -6 -9 -1 -9 Z" fill="#b7a6e0" opacity=".85"/>
+  </g>
+</svg>
+
+
+<!-- ============================================================
+     4 · RAZONES
+     ============================================================ -->
+<section>
+  <div class="envoltura">
+    <p class="antetitulo revela">y son solo algunas</p>
+    <h2 class="titulo revela">Razones por las que te amo</h2>
+
+    <!-- EDITA AQUI: las 10 razones. Cambia el número y el texto libremente. -->
+    <ul class="razones">
+      <li class="razon revela"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 C16 4 19 7 18.5 11 C18 15 15 17.5 11.5 17 C7.5 16.5 5 13.5 5.5 9.5 C6 6 8.5 4 12 4 Z" fill="#f2c9d7"/><path d="M11.6 8.5 C13.8 8.2 15.5 10 15.2 12 C14.9 14 13 15 11.2 14.5 C9.4 14 8.7 12 9.4 10.3 C9.8 9.3 10.6 8.7 11.6 8.5 Z" fill="#dd93b1"/></svg><span><b>Uno</b>Por tu risa. Esa que se te escapa y te tapas la boca como si fuera un secreto. Es lo más lindo que he visto.</span></li>
+
+      <li class="razon revela" data-d="1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19 C7 15.5 4 12.8 4 9.6 C4 7.2 5.9 5.5 8.1 5.5 C9.6 5.5 11 6.3 12 7.7 C13 6.3 14.4 5.5 15.9 5.5 C18.1 5.5 20 7.2 20 9.6 C20 12.8 17 15.5 12 19 Z" fill="#e5a8bd"/></svg><span><b>Dos</b>Porque contigo no tengo que fingir estar bien. Puedo llegar hecho pedazos y sigues ahí.</span></li>
+
+      <li class="razon revela" data-d="2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 C16 4 19 7 18.5 11 C18 15 15 17.5 11.5 17 C7.5 16.5 5 13.5 5.5 9.5 C6 6 8.5 4 12 4 Z" fill="#fbd9c2"/><path d="M11.6 8.5 C13.8 8.2 15.5 10 15.2 12 C14.9 14 13 15 11.2 14.5 C9.4 14 8.7 12 9.4 10.3 C9.8 9.3 10.6 8.7 11.6 8.5 Z" fill="#f0b48a"/></svg><span><b>Tres</b>Por cómo te emocionas con cosas chiquitas: un desayuno bonito, una canción, un plan tonto de un martes.</span></li>
+
+      <li class="razon revela" data-d="3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 C16 4 19 7 18.5 11 C18 15 15 17.5 11.5 17 C7.5 16.5 5 13.5 5.5 9.5 C6 6 8.5 4 12 4 Z" fill="#ded6f0"/><path d="M11.6 8.5 C13.8 8.2 15.5 10 15.2 12 C14.9 14 13 15 11.2 14.5 C9.4 14 8.7 12 9.4 10.3 C9.8 9.3 10.6 8.7 11.6 8.5 Z" fill="#b7a6e0"/></svg><span><b>Cuatro</b>Por lo terca que eres cuando tienes razón. Y por lo linda que te pones cuando no la tienes y lo sabes.</span></li>
+
+      <li class="razon revela"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19 C7 15.5 4 12.8 4 9.6 C4 7.2 5.9 5.5 8.1 5.5 C9.6 5.5 11 6.3 12 7.7 C13 6.3 14.4 5.5 15.9 5.5 C18.1 5.5 20 7.2 20 9.6 C20 12.8 17 15.5 12 19 Z" fill="#dd93b1"/></svg><span><b>Cinco</b>Por cómo cuidas a la gente que quieres. Verte con niños me desarma.</span></li>
+
+      <li class="razon revela" data-d="1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 C16 4 19 7 18.5 11 C18 15 15 17.5 11.5 17 C7.5 16.5 5 13.5 5.5 9.5 C6 6 8.5 4 12 4 Z" fill="#f2c9d7"/><path d="M11.6 8.5 C13.8 8.2 15.5 10 15.2 12 C14.9 14 13 15 11.2 14.5 C9.4 14 8.7 12 9.4 10.3 C9.8 9.3 10.6 8.7 11.6 8.5 Z" fill="#dd93b1"/></svg><span><b>Seis</b>Porque me haces querer ser mejor sin pedírmelo nunca. Solo por el ejemplo.</span></li>
+
+      <li class="razon revela" data-d="2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 C16 4 19 7 18.5 11 C18 15 15 17.5 11.5 17 C7.5 16.5 5 13.5 5.5 9.5 C6 6 8.5 4 12 4 Z" fill="#fbd9c2"/><path d="M11.6 8.5 C13.8 8.2 15.5 10 15.2 12 C14.9 14 13 15 11.2 14.5 C9.4 14 8.7 12 9.4 10.3 C9.8 9.3 10.6 8.7 11.6 8.5 Z" fill="#f0b48a"/></svg><span><b>Siete</b>Por las conversaciones que se hacen larguísimas y ninguno de los dos quiere colgar.</span></li>
+
+      <li class="razon revela" data-d="3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19 C7 15.5 4 12.8 4 9.6 C4 7.2 5.9 5.5 8.1 5.5 C9.6 5.5 11 6.3 12 7.7 C13 6.3 14.4 5.5 15.9 5.5 C18.1 5.5 20 7.2 20 9.6 C20 12.8 17 15.5 12 19 Z" fill="#e5a8bd"/></svg><span><b>Ocho</b>Porque volviste. Sabiendo todo lo difícil que había sido, igual volviste. Eso vale más que mil promesas.</span></li>
+
+      <li class="razon revela"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 C16 4 19 7 18.5 11 C18 15 15 17.5 11.5 17 C7.5 16.5 5 13.5 5.5 9.5 C6 6 8.5 4 12 4 Z" fill="#ded6f0"/><path d="M11.6 8.5 C13.8 8.2 15.5 10 15.2 12 C14.9 14 13 15 11.2 14.5 C9.4 14 8.7 12 9.4 10.3 C9.8 9.3 10.6 8.7 11.6 8.5 Z" fill="#b7a6e0"/></svg><span><b>Nueve</b>Por cómo hueles, por cómo te ríes de tus propios chistes, por mil detalles tuyos que no sabría explicar.</span></li>
+
+      <li class="razon revela" data-d="1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19 C7 15.5 4 12.8 4 9.6 C4 7.2 5.9 5.5 8.1 5.5 C9.6 5.5 11 6.3 12 7.7 C13 6.3 14.4 5.5 15.9 5.5 C18.1 5.5 20 7.2 20 9.6 C20 12.8 17 15.5 12 19 Z" fill="#dd93b1"/></svg><span><b>Diez</b>Porque cuando estoy contigo no quiero estar en ningún otro lado. Eso, para mí, es estar en casa.</span></li>
+    </ul>
+
+    <!-- EDITA AQUI: el cierre de las razones -->
+    <div class="cierre-historia revela">
+      <p>
+        Y esas son solo unas cuantas de las cosas que me vuelven loco de ti.
+      </p>
+      <p>
+        Porque si me pusiera a enumerarlas todas no me alcanzaría esta página,
+        ni el día, ni las palabras. Tendría que ir sumando una por cada gesto tuyo
+        que descubro, y tú sigues dándome motivos nuevos todos los días.
+      </p>
+      <p>
+        Así que lo dejo en diez, y me guardo el resto para írtelos contando
+        <strong>el resto de mi vida</strong>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<svg class="separador revela" viewBox="0 0 260 30" aria-hidden="true">
+  <path d="M8 18 C70 6 190 6 252 18" stroke="#e5a8bd" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".6"/>
+  <path d="M92 16 C86 9 89 3 97 6 C102 8 100 14 92 16 Z" fill="#cdd8b6" opacity=".7"/>
+  <path d="M168 16 C174 9 171 3 163 6 C158 8 160 14 168 16 Z" fill="#cdd8b6" opacity=".7"/>
+  <g transform="translate(130,15) scale(.42)">
+    <path d="M0 -22 C13 -22 24 -12 22 2 C20 16 9 24 -2 23 C-15 22 -24 12 -22 -2 C-20 -14 -11 -22 0 -22 Z" fill="#fbd9c2" opacity=".9"/>
+    <path d="M-1 -9 C6 -10 12 -4 11 3 C10 10 4 14 -2 13 C-9 12 -12 7 -11 1 C-10 -5 -6 -9 -1 -9 Z" fill="#f0b48a" opacity=".85"/>
+  </g>
+</svg>
+
+
+<!-- ============================================================
+     5 · POEMAS
+     Nota: fragmentos breves y atribuidos. Bécquer es dominio
+     público (se incluye rima completa); de Neruda y Sabines
+     solo van citas cortas, como corresponde.
+     ============================================================ -->
+<section>
+  <div class="envoltura">
+    <p class="antetitulo revela">lo dijeron mejor que yo</p>
+    <h2 class="titulo revela">Poemas</h2>
+
+    <div class="poemas">
+
+      <figure class="poema revela">
+        <p class="verso">«Quiero hacer contigo
+lo que la primavera hace con los cerezos.»</p>
+        <p class="autor">Pablo Neruda</p>
+        <span class="obra">Poema 14 · fragmento</span>
+      </figure>
+
+      <figure class="poema revela" data-d="1">
+        <p class="verso">Volverán las oscuras golondrinas
+en tu balcón sus nidos a colgar,
+y otra vez con el ala a sus cristales
+jugando llamarán;
+
+pero aquellas que el vuelo refrenaban
+tu hermosura y mi dicha al contemplar,
+aquellas que aprendieron nuestros nombres…
+ésas… ¡no volverán!
+
+Volverán las tupidas madreselvas
+de tu jardín las tapias a escalar,
+y otra vez a la tarde, aun más hermosas,
+sus flores se abrirán;
+
+pero aquellas cuajadas de rocío,
+cuyas gotas mirábamos temblar
+y caer, como lágrimas del día…
+ésas… ¡no volverán!
+
+Volverán del amor en tus oídos
+las palabras ardientes a sonar;
+tu corazón, de su profundo sueño
+tal vez despertará;
+
+pero mudo y absorto y de rodillas,
+como se adora a Dios ante su altar,
+como yo te he querido…, desengáñate:
+¡así no te querrán!</p>
+        <p class="autor">Gustavo Adolfo Bécquer</p>
+        <span class="obra">Rima LIII · completa</span>
+      </figure>
+
+      <figure class="poema revela" data-d="2">
+        <p class="verso">Por el sueño y el aire, por el agua y la luz,
+¿cuántos años tendría que quererte
+para acabar de conocerte?</p>
+        <p class="autor">Jaime Sabines</p>
+        <span class="obra">fragmento</span>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<svg class="separador revela" viewBox="0 0 260 30" aria-hidden="true">
+  <path d="M8 15 C70 26 190 26 252 15" stroke="#e5a8bd" stroke-width="1.2" fill="none" stroke-linecap="round" opacity=".6"/>
+  <path d="M96 20 C90 13 93 7 101 10 C106 12 104 18 96 20 Z" fill="#cdd8b6" opacity=".7"/>
+  <path d="M164 20 C170 13 167 7 159 10 C154 12 156 18 164 20 Z" fill="#cdd8b6" opacity=".7"/>
+  <g transform="translate(130,17) scale(.42)">
+    <path d="M0 -22 C13 -22 24 -12 22 2 C20 16 9 24 -2 23 C-15 22 -24 12 -22 -2 C-20 -14 -11 -22 0 -22 Z" fill="#f2c9d7" opacity=".9"/>
+    <path d="M-1 -9 C6 -10 12 -4 11 3 C10 10 4 14 -2 13 C-9 12 -12 7 -11 1 C-10 -5 -6 -9 -1 -9 Z" fill="#dd93b1" opacity=".85"/>
+  </g>
+</svg>
+
+
+<!-- ============================================================
+     6 · MOMENTOS (polaroids)
+     Las fotos están en ./fotos/ — para cambiarlas basta con
+     reemplazar el archivo o el src.
+     ============================================================ -->
+<section>
+  <div class="envoltura">
+    <p class="antetitulo revela">pruebas de que fue real</p>
+    <h2 class="titulo revela">Momentos</h2>
+
+    <div class="galeria">
+      <!-- EDITA AQUI: pie de foto -->
+      <figure class="polaroid revela">
+        <img src="fotos/foto1.jpg" alt="La noche que te pedí ser mi novia" loading="lazy">
+        <figcaption>La noche del cartelito y los nervios</figcaption>
+      </figure>
+
+      <figure class="polaroid revela" data-d="1">
+        <img src="fotos/foto2.jpg" alt="Riéndote en la cena" loading="lazy">
+        <figcaption>Esa risa que me desarma</figcaption>
+      </figure>
+
+      <figure class="polaroid revela" data-d="2">
+        <img src="fotos/foto3.jpg" alt="Desayuno juntos" loading="lazy">
+        <figcaption>Desayunar contigo, mi plan favorito</figcaption>
+      </figure>
+
+      <figure class="polaroid revela" data-d="3">
+        <img src="fotos/foto4.jpg" alt="Tú cuidando al bebé" loading="lazy">
+        <figcaption>Y aquí me imaginé toda una vida</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     7 · CARTA FINAL
+     ============================================================ -->
+<section>
+  <div class="envoltura">
+    <p class="antetitulo revela">antes de cerrar</p>
+    <h2 class="titulo revela">Para ti</h2>
+
+    <!-- EDITA AQUI: toda la carta -->
+    <div class="carta revela" data-d="1">
+      <p class="saludo">Kamila,</p>
+      <p>
+        Cuatro meses suenan a poco escritos así, pero tú y yo sabemos todo lo que
+        hubo que caminar para llegar a contarlos. Cada 21 es mi manera de decirte
+        que no lo doy por sentado.
+      </p>
+      <p>
+        Gracias por volver. Gracias por quedarte los días en que soy insoportable,
+        por reírte de mis tonterías, por hacerme sentir que tengo dónde llegar.
+        No sé cuántos meses más voy a poder escribirte, pero pienso escribirlos todos.
+      </p>
+      <p>
+        Te amo. Hoy más que ayer y bastante menos que mañana.
+      </p>
+      <div class="firma">
+        <!-- EDITA AQUI: tu nombre y la fecha -->
+        <div class="nombre">Tuyo, siempre</div>
+        <div class="fecha">21 de julio</div>
+      </div>
+    </div>
+
+    <!-- EDITA AQUI: la frase de cierre -->
+    <p class="frase-final revela" data-d="2">
+      «Si el amor fuera un lugar, yo ya tendría tu nombre en la dirección.»
+    </p>
+  </div>
+</section>
+
+<footer>
+  <span class="corazon" aria-hidden="true">♡</span>
+  hecho a mano, para ti
+</footer>
+
+<script>
+/* ============================================================
+   Revelado suave al hacer scroll
+   ============================================================ */
+(function(){
+  var elementos = document.querySelectorAll('.revela');
+
+  if(!('IntersectionObserver' in window)){
+    elementos.forEach(function(el){ el.classList.add('visible'); });
+    return;
+  }
+
+  var observador = new IntersectionObserver(function(entradas){
+    entradas.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        observador.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+  elementos.forEach(function(el){ observador.observe(el); });
+
+  /* la portada se muestra de una, sin esperar scroll */
+  requestAnimationFrame(function(){
+    document.querySelectorAll('.portada .revela').forEach(function(el){
+      el.classList.add('visible');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

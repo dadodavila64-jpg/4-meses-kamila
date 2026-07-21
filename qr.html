@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Código QR · 4 meses</title>
+
+<!--
+  ============================================================
+  CÓMO USAR ESTE QR  ·  LEE ESTO PRIMERO
+  ------------------------------------------------------------
+  Un QR no puede apuntar a un archivo que está en tu computadora.
+  Necesita una dirección de internet. Son 2 minutos:
+
+  OPCIÓN A · Netlify Drop (la más rápida, sin cuenta)
+    1. Entra a  https://app.netlify.com/drop
+    2. Arrastra la CARPETA completa "4-meses-kamila"
+       (con index.html y la carpeta fotos/ adentro).
+    3. Te da un link tipo  https://algo-random-123.netlify.app
+    4. Copia ese link.
+
+  OPCIÓN B · GitHub Pages o Vercel
+    Sube la carpeta a un repo y activa Pages, o arrastra la
+    carpeta en vercel.com. Mismo resultado: un link público.
+
+  DESPUÉS:
+    5. Abre este archivo y busca la línea marcada
+       "EDITA AQUI: pega tu link".
+    6. Reemplaza  https://TU-LINK-AQUI.com  por tu link real.
+    7. Guarda, abre este archivo y el QR ya apunta ahí.
+    8. Descárgalo con el botón e imprímelo o mándaselo.
+  ============================================================
+-->
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --rosa:#f3cdd9; --rosa-hondo:#e5a8bd; --durazno:#fbd9c2;
+  --lavanda:#ded6f0; --crema:#fff8f3; --tinta:#6b4a52; --tinta-suave:#8d6c74;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0; min-height:100svh; display:flex; align-items:center; justify-content:center;
+  padding:2rem 1.2rem; font-family:'Quicksand',system-ui,sans-serif; color:var(--tinta);
+  background:
+    radial-gradient(700px 500px at 10% 0%,  rgba(243,205,217,.6), transparent 60%),
+    radial-gradient(600px 480px at 95% 20%, rgba(222,214,240,.5), transparent 60%),
+    radial-gradient(700px 520px at 50% 105%,rgba(251,217,194,.5), transparent 62%),
+    linear-gradient(170deg,#fff8f3,#fdf1ea 55%,#fff8f3);
+}
+.tarjeta{
+  width:min(400px,100%); text-align:center;
+  background:rgba(255,255,255,.7); backdrop-filter:blur(3px);
+  border:1px solid rgba(229,168,189,.35); border-radius:22px;
+  padding:2.2rem 1.5rem 1.9rem;
+  box-shadow:0 18px 44px -20px rgba(107,74,82,.4);
+}
+.flor{width:70px; margin:0 auto .4rem; display:block}
+h1{font-family:'Great Vibes',cursive; font-weight:400; font-size:2.7rem; margin:0 0 .1rem; line-height:1.1}
+.sub{font-size:.68rem; letter-spacing:.28em; text-transform:uppercase; color:var(--rosa-hondo); font-weight:600; margin:0 0 1.6rem}
+#qr{
+  display:inline-block; padding:14px; background:#fff; border-radius:14px;
+  box-shadow:0 8px 22px -12px rgba(107,74,82,.45); line-height:0;
+}
+#qr img,#qr canvas{display:block; width:100%; height:auto; max-width:230px}
+.pie{font-size:.92rem; line-height:1.6; color:var(--tinta-suave); margin:1.4rem 0 0}
+.url{
+  display:block; margin-top:.55rem; font-size:.74rem; word-break:break-all;
+  color:var(--rosa-hondo); font-weight:600;
+}
+.btn{
+  display:inline-block; margin-top:1.3rem; padding:.75rem 1.5rem;
+  min-height:44px; line-height:1.6;
+  border:1px solid var(--rosa-hondo); border-radius:999px;
+  background:transparent; color:var(--tinta); font-family:inherit;
+  font-size:.8rem; letter-spacing:.16em; text-transform:uppercase; font-weight:600;
+  cursor:pointer; text-decoration:none; transition:background .25s,color .25s;
+}
+.btn:hover,.btn:active{background:var(--rosa-hondo); color:#fff}
+.aviso{
+  margin-top:1.6rem; padding:.9rem 1rem; border-radius:12px;
+  background:rgba(251,217,194,.4); border:1px dashed rgba(229,168,189,.6);
+  font-size:.78rem; line-height:1.6; color:var(--tinta-suave); text-align:left;
+}
+.aviso b{color:var(--tinta)}
+</style>
+</head>
+<body>
+
+<main class="tarjeta">
+  <svg class="flor" viewBox="0 0 60 60" aria-hidden="true">
+    <g transform="translate(30,32)">
+      <path d="M0 -24 C14 -24 26 -13 24 2 C22 18 10 26 -2 25 C-16 24 -26 13 -24 -2 C-22 -15 -12 -24 0 -24 Z" fill="#f2c9d7" opacity=".9"/>
+      <path d="M-2 -15 C9 -16 18 -8 17 2 C16 12 7 19 -2 18 C-12 17 -18 9 -17 0 C-16 -9 -10 -14 -2 -15 Z" fill="#e9b0c6" opacity=".85"/>
+      <path d="M-1 -8 C6 -9 11 -3 10 3 C9 9 3 12 -2 11 C-8 10 -10 5 -9 0 C-8 -5 -5 -8 -1 -8 Z" fill="#dd93b1" opacity=".85"/>
+    </g>
+    <path d="M8 14 C13 9 20 9 24 14" stroke="#cdd8b6" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".8"/>
+  </svg>
+
+  <h1>Ábrelo aquí</h1>
+  <p class="sub">4 meses · Kamila</p>
+
+  <div id="qr"></div>
+
+  <p class="pie">
+    Escanea con la cámara de tu celular.
+    <span class="url" id="urlTexto"></span>
+  </p>
+
+  <a class="btn" id="descargar" download="qr-4-meses.png" href="#">Descargar QR</a>
+
+  <div class="aviso" id="aviso">
+    <b>Falta un paso:</b> sube la carpeta a
+    <b>app.netlify.com/drop</b> y pega el link que te da en la línea
+    marcada dentro de este archivo (<b>ENLACE</b>, arriba del todo del script).
+  </div>
+</main>
+
+<script>
+/* ============================================================
+   EDITA AQUI: pega tu link
+   Reemplaza la URL de abajo por la que te dio Netlify / GitHub
+   Pages / Vercel. Debe empezar con https://
+   ============================================================ */
+var ENLACE = "https://TU-LINK-AQUI.com";
+
+
+/* ---------- de aquí para abajo no hace falta tocar nada ---------- */
+(function(){
+  var caja   = document.getElementById('qr');
+  var texto  = document.getElementById('urlTexto');
+  var boton  = document.getElementById('descargar');
+  var aviso  = document.getElementById('aviso');
+
+  texto.textContent = ENLACE;
+  if(ENLACE.indexOf('TU-LINK-AQUI') === -1){ aviso.style.display = 'none'; }
+
+  if(typeof QRCode === 'undefined'){
+    caja.innerHTML = '<p style="font-size:.8rem;line-height:1.5;padding:1rem;color:#8d6c74">'
+      + 'No se pudo cargar la librería del QR.<br>Conéctate a internet y recarga la página.</p>';
+    boton.style.display = 'none';
+    return;
+  }
+
+  new QRCode(caja, {
+    text: ENLACE,
+    width: 460,           /* se genera grande y se muestra escalado: se ve nítido al imprimir */
+    height: 460,
+    colorDark:  "#6b4a52",  /* el QR en tinta cálida, no negro puro */
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+  });
+
+  /* el botón de descarga toma lo que haya generado la librería */
+  boton.addEventListener('click', function(e){
+    var img  = caja.querySelector('img');
+    var lien = caja.querySelector('canvas');
+    var data = img && img.src ? img.src : (lien ? lien.toDataURL('image/png') : null);
+    if(!data){ e.preventDefault(); return; }
+    boton.href = data;
+  });
+})();
+</script>
+
+</body>
+</html>
